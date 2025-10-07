@@ -11,11 +11,13 @@ RFdiffusion depends on DGL (Deep Graph Library), which has the following compati
 
 ## The Solution
 
-The workaround involves using PyTorch 2.7 with CUDA 12.8 while installing DGL 2.4 compiled for PyTorch 2.4/CUDA 12.4. Despite the version mismatch warning, this configuration is functional.
+The workaround involves using PyTorch 2.7+ with CUDA 12.8 while installing DGL 2.4 compiled for PyTorch 2.4/CUDA 12.4. Despite the version mismatch warning, this configuration is functional.
 
 ### Credit
 This solution is based on community workarounds documented in:
-- https://github.com/RosettaCommons/RFdiffusion/issues/349
+- **GitHub Issue**: [RosettaCommons/RFdiffusion#349 - how to install RFdiffusion in Cuda12.8 and RTX50series](https://github.com/RosettaCommons/RFdiffusion/issues/349)
+- Contributed by [@DTZhou1996](https://github.com/DTZhou1996) and [@kerrding](https://github.com/kerrding)
+- Tested and validated on RTX 5090 with PyTorch 2.7/2.8
 
 ## Installation Steps
 
