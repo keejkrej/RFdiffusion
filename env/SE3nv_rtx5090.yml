@@ -3,14 +3,13 @@ channels:
   - conda-forge
   - nodefaults
 dependencies:
-  - python=3.12
+  - python=3.11
+  - pytorch=2.8.0
+  - pytorch-cuda=12.8
   - pip
   - pip:
-    # PyTorch 2.8 with CUDA 12.8 (default from pytorch.org)
-    # Install via: pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
-    
-    # DGL 2.4 (install separately with --no-deps after PyTorch)
-    # Install via: pip install --no-deps dgl -f https://data.dgl.ai/wheels/torch-2.4/cu124/repo.html
+    # DGL 2.4 must be installed separately (after environment creation)
+    # Run: pip install --no-deps dgl -f https://data.dgl.ai/wheels/torch-2.4/cu124/repo.html
     
     # DGL dependencies
     - pandas
@@ -42,23 +41,20 @@ dependencies:
 #    conda env create -f env/SE3nv_rtx5090.yml
 #    conda activate SE3nv
 #
-# 2. Install PyTorch 2.8 with CUDA 12.8:
-#    pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
-#
-# 3. Install DGL 2.4 (requires --no-deps to prevent PyTorch downgrade):
+# 2. Install DGL 2.4 (requires --no-deps to prevent PyTorch downgrade):
 #    pip install --no-deps dgl -f https://data.dgl.ai/wheels/torch-2.4/cu124/repo.html
 #
-# 4. Install SE3Transformer:
+# 3. Install SE3Transformer:
 #    cd env/SE3Transformer
 #    pip install --no-cache-dir -r requirements.txt
 #    python setup.py install
 #    cd ../..
 #
-# 5. Install RFdiffusion:
+# 4. Install RFdiffusion:
 #    pip install -e .
 #
-# 6. Apply e3nn fix for PyTorch 2.8:
-#    Edit: ~/miniforge3/envs/SE3nv/lib/python3.12/site-packages/e3nn/o3/_wigner.py
+# 5. Apply e3nn fix for PyTorch 2.8:
+#    Edit: ~/miniforge3/envs/SE3nv/lib/python3.11/site-packages/e3nn/o3/_wigner.py
 #    Line 10: Add weights_only=False parameter to torch.load()
 #    
 #    From: torch.load(os.path.join(os.path.dirname(__file__), 'constants.pt'))
@@ -67,7 +63,7 @@ dependencies:
 # See README_5090.md for detailed documentation.
 #
 # Configuration:
-# - Python 3.12
+# - Python 3.11 (wandb 0.12.0 not compatible with Python 3.12)
 # - PyTorch 2.8.0 with CUDA 12.8 (from pytorch.org)
 # - DGL 2.4 compiled for PyTorch 2.4/CUDA 12.4 (compatible with PyTorch 2.8)
 # - All dependencies managed in conda environment
