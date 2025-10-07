@@ -14,3 +14,9 @@ tests/reference_outputs/
 tests/target_folds
 tests/tim_barrel_scaffold
 tests/tests_*
+
+# Test outputs and temporary files
+test_output/
+outputs/
+setup_complete.txt
+download_models.sh
